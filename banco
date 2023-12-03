@@ -1,0 +1,65 @@
+typescript
+Copy code
+class ContaBancaria {
+    private saldo: number;
+
+    constructor(saldoInicial: number = 0) {
+        this.saldo = saldoInicial;
+    }
+
+    depositar(valor: number): void {
+        this.saldo += valor;
+        console.log(`Depósito de R$${valor} realizado.`);
+    }
+
+    sacar(valor: number): void {
+        if (this.saldo >= valor) {
+            this.saldo -= valor;
+            console.log(`Saque de R$${valor} realizado.`);
+        } else {
+            console.log(`Saldo insuficiente para saque de R$${valor}.`);
+        }
+    }
+
+    consultarSaldo(): void {
+        console.log(`Saldo atual: R$${this.saldo}`);
+    }
+}
+
+class Cliente {
+    private nome: string;
+    private conta: ContaBancaria;
+
+    constructor(nome: string, conta: ContaBancaria) {
+        this.nome = nome;
+        this.conta = conta;
+    }
+
+    fazerDeposito(valor: number): void {
+        this.conta.depositar(valor);
+    }
+
+    fazerSaque(valor: number): void {
+        this.conta.sacar(valor);
+    }
+
+    verificarSaldo(): void {
+        this.conta.consultarSaldo();
+    }
+}
+
+// Exemplo de uso:
+const contaMaria = new ContaBancaria(1000);
+const clienteMaria = new Cliente('Maria', contaMaria);
+
+clienteMaria.fazerDeposito(500);
+clienteMaria.verificarSaldo();
+
+clienteMaria.fazerSaque(200);
+clienteMaria.verificarSaldo();
+
+clienteMaria.fazerSaque(2000); // Tentativa de saque com saldo insuficiente
+Neste exemplo:
+
+ContaBancaria representa uma conta bancária simples com métodos para depósito, saque e consulta de saldo.
+Cliente representa um cliente que possui uma conta bancária e pode realizar operações como depósito, saque e verificar saldo.
