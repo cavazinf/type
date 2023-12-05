@@ -1,0 +1,56 @@
+Primeiro, você precisará ter o ambiente de desenvolvimento React configurado. Certifique-se de ter o Node.js instalado e execute o seguinte comando no terminal para criar um novo aplicativo React:
+
+bash
+Copy code
+npx create-react-app nome-do-seu-app
+cd nome-do-seu-app
+Agora, você pode abrir o código do projeto com seu editor de código preferido. Vamos criar um componente para a Homepage. Substitua o conteúdo do arquivo src/App.js com o seguinte código:
+
+javascript
+Copy code
+import React from 'react';
+import './App.css';
+
+function Homepage() {
+  return (
+    <div className="homepage">
+      <h1>Bem-vindo à Minha Homepage!</h1>
+      <p>Esta é uma página inicial simples criada com React.</p>
+    </div>
+  );
+}
+
+export default Homepage;
+Em seguida, crie um arquivo src/App.css para estilizar sua página. Adicione o seguinte código para estilizar a Homepage:
+
+css
+Copy code
+.homepage {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.homepage h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.homepage p {
+  font-size: 1.2em;
+}
+Por fim, modifique o arquivo src/index.js para usar o componente Homepage que você criou:
+
+javascript
+Copy code
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import Homepage from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Homepage />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+Agora, ao iniciar seu aplicativo React (npm start ou yarn start dependendo do gerenciador de pacotes que você está usando), você verá a sua página inicial sendo exibida no navegador quando acessar http://localhost:3000.
