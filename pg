@@ -1,0 +1,67 @@
+import React from 'react';
+import './UserDetails.css';
+
+function UserDetails() {
+  // Suponha que userDetails seja um objeto com os detalhes do usuário
+  const userDetails = {
+    name: 'Usuário Exemplo',
+    email: 'usuario@example.com',
+    idade: 25,
+    cidade: 'Exemploville'
+  };
+
+  return (
+    <div className="user-details">
+      <h2>Detalhes do Usuário</h2>
+      <div>
+        <strong>Nome:</strong> {userDetails.name}
+      </div>
+      <div>
+        <strong>Email:</strong> {userDetails.email}
+      </div>
+      <div>
+        <strong>Idade:</strong> {userDetails.idade}
+      </div>
+      <div>
+        <strong>Cidade:</strong> {userDetails.cidade}
+      </div>
+    </div>
+  );
+}
+
+export default UserDetails;
+Agora, assim como na página inicial, você pode criar um arquivo de estilos UserDetails.css para estilizar os detalhes do usuário:
+
+css
+Copy code
+.user-details {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.user-details h2 {
+  margin-bottom: 15px;
+}
+
+.user-details div {
+  margin-bottom: 10px;
+}
+Depois de criar o componente e o arquivo de estilos, você pode usá-lo em qualquer lugar do seu aplicativo React, assim como fez com a Homepage. Por exemplo, você pode importar e renderizar o componente UserDetails em uma página específica:
+
+javascript
+Copy code
+import React from 'react';
+import UserDetails from './UserDetails';
+
+function UserProfilePage() {
+  return (
+    <div>
+      <h1>Página do Perfil do Usuário</h1>
+      <UserDetails />
+    </div>
+  );
+}
+
+export default UserProfilePage;
+Assim, ao criar uma página chamada UserProfilePage, você pode adicionar os detalhes do usuário à página usando o componente UserDetails.
