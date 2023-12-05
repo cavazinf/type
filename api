@@ -1,0 +1,73 @@
+Primeiramente, certifique-se de ter o Node.js instalado em seu sistema. Depois, siga estes passos:
+
+Passo 1: Inicialize o projeto Node.js
+Abra um terminal e crie um novo diretório para o seu projeto. Dentro do diretório, execute os seguintes comandos para inicializar o projeto Node.js e instalar o Express:
+
+bash
+Copy code
+mkdir dio-bank-api
+cd dio-bank-api
+npm init -y
+npm install express
+Passo 2: Crie o arquivo do servidor
+Crie um arquivo chamado server.js na raiz do seu projeto e adicione o código a seguir:
+
+javascript
+Copy code
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.use(express.json());
+
+// Dados fictícios para simular as contas bancárias
+let accounts = [
+  { id: 1, name: 'João', balance: 1000 },
+  { id: 2, name: 'Maria', balance: 500 },
+  // Adicione mais contas, se necessário
+];
+
+// Rota para obter todas as contas
+app.get('/accounts', (req, res) => {
+  res.json(accounts);
+});
+
+// Rota para obter uma conta específica por ID
+app.get('/accounts/:id', (req, res) => {
+  const accountId = parseInt(req.params.id);
+  const account = accounts.find(acc => acc.id === accountId);
+
+  if (!account) {
+    return res.status(404).json({ message: 'Conta não encontrada' });
+  }
+
+  res.json(account);
+});
+
+// Rota para criar uma nova conta
+app.post('/accounts', (req, res) => {
+  const { name, balance } = req.body;
+
+  const newAccount = {
+    id: accounts.length + 1,
+    name,
+    balance
+  };
+
+  accounts.push(newAccount);
+  res.status(201).json(newAccount);
+});
+
+// Inicie o servidor na porta especificada
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
+Este exemplo cria uma API básica usando Express, com rotas para obter todas as contas, obter uma conta específica por ID e criar uma nova conta.
+
+Passo 3: Inicie o servidor
+No terminal, execute o seguinte comando para iniciar o servidor:
+
+bash
+Copy code
+node server.js
+Agora sua API está rodando na porta 3000 (ou na porta que você especificou). Você pode testar as rotas utilizando ferramentas como o Postman ou o cURL para fazer requisições GET para /accounts ou /accounts/:id, e POST para /accounts para criar uma nova conta.
